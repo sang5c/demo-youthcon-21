@@ -2,7 +2,6 @@ package com.example.helloapp.hello;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,10 +13,9 @@ public class HelloService {
     public String callWorld() {
         RestTemplate restTemplate = new RestTemplate();
         String url = getRandomUrl();
-        ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
-        log.info("RESPONSE CODE : " + response.getStatusCode());
-        log.info("BODY : " + response.getBody());
-        return response.getBody();
+        String response = restTemplate.getForObject(url, String.class);
+        log.info("## world response: " + response);
+        return response;
     }
 
     private String getRandomUrl() {
