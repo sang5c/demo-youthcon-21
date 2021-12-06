@@ -1,4 +1,0 @@
-rootProject.name = 'demo-youthcon'
-include 'hello-app'
-include 'world-app'
-include 'hi-app'
