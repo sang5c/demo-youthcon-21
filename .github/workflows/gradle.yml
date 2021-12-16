@@ -25,7 +25,13 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
-    - name: Build with Gradle
-      uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
-      with:
-        arguments: build
+        
+    - name: build and push
+      run: ./gradlew clean jib --image youthconpso/hello:latest \                                                                                                                                ✔  38s  00:06:18 
+            -Djib.to.auth.username=$DUSER \
+            -Djib.to.auth.password=$DPWD
+
+#     - name: Build with Gradle
+#       uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
+#       with:
+#         arguments: build
